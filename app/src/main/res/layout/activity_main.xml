@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_height="wrap_content" 
+        android:textSize="25dp"
+        android:textStyle="italic|bold"
+        android:layout_gravity="center"
+        android:text="Schedule"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:weightSum="4">
+    
+    <EditText
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/dayId"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:hint="Day"
+        android:layout_height="wrap_content" />
+
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/algorithmId"
+        android:textSize="18dp"
+        android:textStyle="italic"
+        android:hint="Algorithm"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/graphicsId"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:hint="Graphics"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/compilerId"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:hint="Compiler"
+        android:layout_height="wrap_content" />
+    
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Insert"
+            android:layout_weight="1"
+            android:onClick="insert"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Display"
+            android:onClick="display"
+            android:layout_weight="1"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="Update"
+            android:text="Update"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="searchRow"
+            android:text="Search Row"
+            android:layout_weight="1"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Search element"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <Button
+        android:layout_width="126dp"
+        android:layout_height="43dp"
+        android:onClick="Delete"
+        android:layout_marginTop="10dp"
+        android:text="Delete"
+        android:layout_gravity="right"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:id="@+id/showId"
+            android:textSize="30dp"
+            android:textStyle="italic"
+            android:hint="Show"/>
+    </ScrollView>
+</LinearLayout>
