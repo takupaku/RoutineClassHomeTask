@@ -5,27 +5,44 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 public class MainActivity extends AppCompatActivity {
+    //ImageView imageView;
     private EditText etDay, etAlgorithm, etGraphics, etCompiler;
     private TextView tvShow;
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         initView();
+        animateLyout();
+    }
+
+    private void animateLyout() {
+        YoYo.with(Techniques.FadeInUp)
+                .duration(1000)
+                .repeat(0)
+                .playOn(linearLayout);
     }
 
     private void initView() {
+        //imageView= findViewById(R.id.addpicId);
         etDay = findViewById(R.id.dayId);
         etAlgorithm = findViewById(R.id.algorithmId);
         etGraphics = findViewById(R.id.graphicsId);
         etCompiler = findViewById(R.id.compilerId);
         tvShow = findViewById(R.id.showId);
+        linearLayout = findViewById(R.id.linearId);
+
     }
 
     public void insert(View view) {
@@ -164,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
         }
         DatabaseConnector databaseConnector = new DatabaseConnector(this);
         Cursor cursor = databaseConnector.searchRow(day);
+
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             etAlgorithm.setText(cursor.getString(1));
@@ -175,4 +193,38 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+//    public void InexactValue(View view) {
+//        String time = etGraphics.getText().toString().trim();
+//
+//        if (time.isEmpty()) {
+//            etGraphics.setError("enter DAY");
+//            etGraphics.requestFocus();
+//            return;
+//        }
+//        DatabaseConnector databaseConnector= new DatabaseConnector(this);
+//        Cursor cursor = databaseConnector.SearchInexactValue(time);
+//
+//
+//        StringBuilder stringBuilder = new StringBuilder();
+//        if (cursor.getCount() > 0) {
+//            cursor.moveToFirst();
+//            for (int i = 0; i < cursor.getCount(); i++) {
+//                stringBuilder.append(" Day : ").append(cursor.getString(0)).append("\n").append(" Algorithms : ").append(cursor.getString(1)).append("\n").append(" Graphics : ").append(cursor.getString(2)).append("\n").append(" Compiler : ").append(cursor.getString(3)).append("\n\n");
+//                cursor.moveToNext();
+//            }
+//            tvShow.setText(stringBuilder);
+//
+//
+//        }
+//
+//        else {
+//
+//            stringBuilder.append(" ");
+//            tvShow.setText(stringBuilder);
+//            Toast.makeText(this, "Result not found..", Toast.LENGTH_SHORT).show();
+//
+//
+//        }
+//    }
 }

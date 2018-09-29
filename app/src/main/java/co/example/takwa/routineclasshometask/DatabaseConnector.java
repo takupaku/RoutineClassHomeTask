@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import java.sql.Time;
+
 public class DatabaseConnector extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "Table_schedule";
     private static final String COL_1 = "Day";
@@ -79,17 +81,17 @@ public class DatabaseConnector extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String sql = "select * from " + TABLE_NAME;
         //select * from TableName;
-        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);//null, coz of no query
         return cursor;
     }
 
 
     public Cursor searchRow(String day) {
-        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String sql = "select * from " + TABLE_NAME + " where Day = " + day;
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();//to get a parameter's value into the query, use a parameter token like ?
+        String sql = "select * from " + TABLE_NAME + " where Day = ?";
         //select * from TableName where id =?;
       //  Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
-        return sqLiteDatabase.rawQuery(sql,null);
+        return sqLiteDatabase.rawQuery(sql,new String[]{day});//parameter need to be passed in rawQuery
     }
 
     public int deleteData(String day) {
@@ -97,6 +99,16 @@ public class DatabaseConnector extends SQLiteOpenHelper {
         return sqLiteDatabase.delete(TABLE_NAME, "Day =?", new String[]{day});
 
     }
+
+//    public Cursor SearchInexactValue(String time){
+//        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+//
+//       // String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " +  COL_2 + " LIKE ? AND " + COL_3 + " =? AND " + COL_4 + " =?";
+//        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " +  COL_3 + " LIKE '%?%' ";
+//       // String sql = "select "+ COL_1 +","+ COL_2 +","+ COL_3 +","+ COL_4+ " from "+TABLE_NAME+" where "+COL_2+" like '%?%' order by "+COL_1;
+//        return sqLiteDatabase.rawQuery(sql,new String[]{time});
+//    }
+
 
 
 }
